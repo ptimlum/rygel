@@ -1,0 +1,12 @@
+[Unit]
+Description=Rygel DLNA server
+After=syslog.target
+
+[Service]
+User=<%= node['rygel']['user'] %>
+Group=<%= node['rygel']['group'] %>
+ExecStart=/usr/bin/rygel -c <%= node['rygel']['config_file'] %>
+# ExecStart=/usr/bin/wrap-dbus /usr/bin/rygel
+
+[Install]
+WantedBy=multi-user.target
